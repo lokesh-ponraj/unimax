@@ -1,0 +1,143 @@
+{% extends 'eega/template.html' %}
+
+{% load static %}
+
+{% block main %}
+<div class="container-fluid">
+  <div class="row"> 
+    <div class="col-2 p-0">
+      <div class="d-flex container-fluid flex-column p-3 text-bg-dark" style=" min-height: 93vh;">
+       
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li>
+                <a href="#" class="nav-link link-light text-white">
+                    <i class="uil uil-estate fw-semibold me-2"></i>Home
+                </a>
+              </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link link-light fw-medium active" aria-current="page" data-bs-toggle="collapse" data-bs-target="#channels-collapse" aria-expanded="true">
+                <i class="uil uil-channel fw-semibold me-2"></i>Channels
+            </a>
+            <div class="collapse show ms-5 py-1" id="channels-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="{% url 'distributers' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Distributors</a></li>
+                  <li><a href="{% url 'dealers' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Dealers</a></li>
+                  <li><a href="{% url 'fleets' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Fleets</a></li>
+                  <li><a href="{% url 'vehicles' %}" class="link-light py-1 d-inline-flex text-decoration-none rounded">Vehicles</a></li>
+                </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link link-light fw-medium" aria-current="page" data-bs-toggle="collapse" data-bs-target="#gps-collapse" aria-expanded="true">
+                <i class="uil uil-sliders-v-alt fw-semibold me-2"></i>GPS Device Controls
+            </a>
+            <div class="collapse ms-5 py-1" id="gps-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="{% url 'gpsdevices' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">GPS Devices</a></li>
+                  <li><a href="{% url 'rawdata' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">RAW Data</a></li>
+                </ul>
+              </div>
+          </li>
+          
+          <li>
+            <a href="{% url 'alerts' %}" class="nav-link text-white fw-medium">
+                <i class="uil uil-exclamation-triangle fw-semibold me-2"></i>
+              Alerts
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'reports' %}" class="nav-link text-white fw-medium">
+                <i class="uil uil-chart-line fw-semibold me-2"></i>
+              Reports
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'fieldEngineer' %}" class="nav-link text-white fw-medium">
+                <i class="uil uil-constructor fw-semibold me-2"></i>
+              Field Engineer
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white fw-medium" aria-current="page" data-bs-toggle="collapse" data-bs-target="#configuration-collapse" aria-expanded="true">
+                <i class="uil uil-setting fw-semibold me-2"></i>
+              Configurations
+            </a>
+            <div class="collapse ms-5 py-1" id="configuration-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Create configuration</a></li>
+                  <li><a href="#" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Set configuration job</a></li>
+                  <li><a href="#" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Geofences</a></li>
+
+                </ul>
+              </div>
+          </li>
+        </ul>
+        <hr>
+       
+    </div>
+    
+    </div>
+    <div class="col-10">
+        <div class="container-fluid mt-4">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item" aria-current="page">Channels</li>
+              <li class="breadcrumb-item active" aria-current="page">Vehicles</li>
+            </ol>
+          </nav>
+          <!-- <div class="row">
+            <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-success" id="runningTotal">145</h1><button class="btn text-white fw-bold bg-success rounded-4">Running</button></div></div>
+            <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-primary" id="runningHalt">145</h1><button class="btn text-white fw-bold bg-primary rounded-4">Halt</button></div></div>
+            <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-warning" id="runningSleep">145</h1><button class="btn text-white fw-bold bg-warning rounded-4">Sleep</button></div></div>
+            <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-danger" id="runningOffline">145</h1><button class="btn text-white fw-bold bg-danger rounded-4">Offline</button></div></div>
+            <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-info" id="runningTotal">145</h1><button class="btn text-white fw-bold bg-info rounded-4">Total</button></div></div>
+            <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-primary" id="clusterMap"><i class="uil uil-globe"></i></h1><button class="btn btn-outline-primary fw-bold  rounded-4">Cluster map view</button></div></div>
+          </div> -->
+  
+          <section class="mt-4">
+            <div class="d-flex align-items-center justify-content-between">
+                <h3 class="text-dark">Vehicles</h3>
+            </div>
+              
+            <table class="table border border-secondary-subtle mt-3 text-center items-center">
+              <thead>
+                <tr>
+                  <th scope="col">SNO</th>
+                  <th scope="col">Registration number</th>
+                  <th scope="col">Running status</th>
+                  <th scope="col">IMEI no</th>
+                  <th scope="col">Distributer</th>
+                  <th scope="col">Dealer</th>
+                  <th scope="col">Serial no</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td class="">TN 78 AY 3657</td>
+                  <td><i class="uil uil-battery-bolt fs-3 text-success"></i></td>
+                  <td class="">862493052093840</td>
+                  <td class="">Mobility Solutions</td>
+                  <td class="">Mobility Solutions limited</td>
+                  <td class="">2203A0547</td>
+                  <td><a href="#" class="text-warning fs-4 me-2"><i class="uil uil-eye "></i></a><a href="#" class="text-secondary fs-4 me-2"><i class="uil uil-edit "></i></a><a href="#" class="text-danger fs-4 me-2"><i class="uil uil-trash-alt "></i></a><a href="" class="text-success fs-4 me-2"><i class="uil uil-play-circle "></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td class="">TN 78 AY 3657</td>
+                  <td><i class="uil uil-battery-bolt fs-3 text-danger"></i></td>
+                  <td class="">862493052093840</td>
+                  <td class="">Mobility Solutions</td>
+                  <td class="">Mobility Solutions limited</td>
+                  <td class="">2203A0547</td>
+                  <td><a href="#" class="text-warning fs-4 me-2"><i class="uil uil-eye "></i></a><a href="#" class="text-secondary fs-4 me-2"><i class="uil uil-edit "></i></a><a href="#" class="text-danger fs-4 me-2"><i class="uil uil-trash-alt "></i></a><a href="" class="text-success fs-4 me-2"><i class="uil uil-play-circle "></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
