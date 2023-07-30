@@ -13,4 +13,6 @@ urlpatterns = [
     path('alerts/',views.alerts,name='alerts'),
     path('reports/', views.reports,name='reports'),
     path('fieldEngineer/',views.fieldEngineer, name='fieldEngineer'),
+    path('configurations/', views.configurations, name='configurations'),
+    path('geofence/', views.geofence, name='geofence'),
 ]

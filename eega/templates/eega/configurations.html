@@ -1,5 +1,4 @@
 {% extends 'eega/template.html' %}
-
 {% load static %}
 
 {% block navBar %}
@@ -45,7 +44,6 @@
     <div class="row"> 
       <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-3 p-0 sm-collapse show" id="sidebar-collapse">
         <div class="d-xxl-flex d-xl-flex d-lg-flex d-md-flex container-fluid flex-column p-3 text-bg-dark" id="lokesh">
-         
           <ul class="nav nav-pills flex-column mb-auto">
               <li>
                   <a href="{% url 'home' %}" class="nav-link link-light  text-white">
@@ -69,7 +67,7 @@
               <a href="#" class="nav-link link-light  fw-medium" aria-current="page" data-bs-toggle="collapse" data-bs-target="#gps-collapse" aria-expanded="true">
                   <i class="uil uil-sliders-v-alt fw-semibold me-1"></i>GPS Controls
               </a>
-              <div class="collapse ms-4 py-1" id="gps-collapse">
+              <div class="collapse  ms-4 py-1" id="gps-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="{% url 'gpsdevices' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">GPS Devices</a></li>
                     <li><a href="{% url 'rawdata' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">RAW Data</a></li>
@@ -78,31 +76,31 @@
             </li>
             
             <li>
-              <a href="{% url 'alerts' %}" class="nav-link text-white  fw-medium">
+              <a href="{% url 'alerts' %}" class="nav-link text-white fw-medium">
                   <i class="uil uil-exclamation-triangle fw-semibold "></i>
                 Alerts
               </a>
             </li>
             <li>
               <a href="{% url 'reports' %}" class="nav-link text-white fw-medium">
-                  <i class="uil uil-chart-line fw-semibold"></i>
+                  <i class="uil uil-chart-line fw-semibold "></i>
                 Reports
               </a>
             </li>
             <li>
-              <a href="{% url 'fieldEngineer' %}" class="nav-link active text-white fw-medium">
-                  <i class="uil uil-constructor fw-semibold"></i>
+              <a href="{% url 'fieldEngineer' %}" class="nav-link text-white fw-medium">
+                  <i class="uil uil-constructor fw-semibold "></i>
                 Field Engineer
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white fw-medium" aria-current="page" data-bs-toggle="collapse" data-bs-target="#configuration-collapse" aria-expanded="true">
+              <a href="#" class="nav-link text-white active fw-medium" aria-current="page" data-bs-toggle="collapse" data-bs-target="#configuration-collapse" aria-expanded="true">
                   <i class="uil uil-setting fw-semibold "></i>
                 Configurations
               </a>
-              <div class="collapse ms-4 py-1" id="configuration-collapse">
+              <div class="collapse show ms-4 py-1" id="configuration-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="{% url 'configurations' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Set configuration</a></li>
+                    <li><a href="{% url 'configurations' %}" class="link-light py-1 d-inline-flex text-decoration-none rounded">Set configuration</a></li>
                     <li><a href="{% url 'geofence' %}" class="link-secondary py-1 d-inline-flex text-decoration-none rounded">Geofences</a></li>
   
                   </ul>
@@ -116,13 +114,16 @@
       </div>
       <div class="col-xxl-10 col-xl-10 col-lg-9 col-md-9">
         <div class="container-fluid mt-4">
-          <nav aria-label="breadcrumb">
+          <nav aria-label="breadcrumb" class="d-flex align-items-center justify-content-between">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Alerts</li>
+              <li class="breadcrumb-item" aria-current="page">Configurations</li>
+              <li class="breadcrumb-item active" aria-current="page">Set configuration</li>
 
             </ol>
+            <div class="d-flex align-items-center gap-2 mb-3">
+                <button class="btn btn-success btn-sm">Add <i class="uil uil-plus-circle"></i></button>
+            </div>
           </nav>
-
           <!-- <div class="row">
             <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-success" id="runningTotal">145</h1><button class="btn text-white fw-bold bg-success rounded-4">Running</button></div></div>
             <div class="col-2"><div class="card shadow text-center fs-1 bg-primary-subtle px-2 pb-2 pt-4"><h1 class=" pb-2 text-primary" id="runningHalt">145</h1><button class="btn text-white fw-bold bg-primary rounded-4">Halt</button></div></div>
@@ -133,79 +134,41 @@
           </div> -->
   
           <section class="mt-4">
-            <div class="d-flex flex-sm-row flex-column gap-lg-2 gap-3 align-items-center justify-content-between">
-              <div>
-                <div class="d-flex gap-3">
-                      <p>Start date:</p>
-                      <p>End date:</p>
-                  </div>
-                  <div class="d-flex align-items-center gap-2">
-                    <button class="btn btn-outline-success">Download</button>
-                    <button class="btn btn-primary">Refresh</button>
-                </div>
-              </div>  
-                
-                <div class="d-flex gap-2">
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="1">Alert data</option>
-                        <option value="2">Critical alert data</option>
-                        <option value="3">Emergency alert data</option>
-                      </select>
-                </div>
-                
-                
-            </div>
+            
            
-              <div class="table-responsive">
-                <table class="table border border-secondary-subtle mt-3 text-center ">
+            <div class="table-responsive">
+              <table class="table border border-secondary-subtle mt-3  ">
                   <thead>
                     <tr>
-                      <th scope="col">SNO</th>
-                      <th scope="col">Serial no</th>
-                      <th scope="col">IMEI no</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Distributer</th>
-                      <th scope="col">View Data</th>
+                      <th scope="col">ID</th>
+                      <th scope="col">Job configuration name</th>
+                      <th scope="col">Action</th>
+  
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">1</th>
+                      <td scope="">4028515f86e95bd4018987a779254496</td>
                       <td class="">2203A0547</td>
-                      <td>860657057891588</td>
-                      <td class="text-success">Assigned</td>
-                      <td class="">MM Associates</td>
-                      <td class=""><a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-eye "></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-link"></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-bell-slash"></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-calender"></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-edit "></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-ellipsis-v"></i></a>
-                        <a href="#" class="text-danger fs-4 me-4"><i class="uil uil-trash-alt "></i></a>    
-                        <label class=" me-2" for="flexCheckDefault">Update F/W</label>
-                        <input  type="checkbox" value="" id="flexCheckDefault">
-                    </td>
+                      <td class="d-flex align-items-center gap-2">
+                          <button class="btn btn-primary btn-sm">Assign</button>
+                          <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-trash-alt"></i></a>
+                      </td>
                     </tr>
                     <tr>
-                      <th scope="row">2</th>
+                      <td scope="row">4028515f86e95bd4018987a779254496</td>
                       <td class="">2203A0547</td>
-                      <td>860657057891588</td>
-                      <td class="text-danger">Unassigned</td>
-                      <td class="">MM Associates</td>
-                      <td class=""><a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-eye "></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-link"></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-bell-slash"></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-calender"></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-edit "></i></a>
-                        <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-ellipsis-v"></i></a>
-                        <a href="#" class="text-danger fs-4 me-4"><i class="uil uil-trash-alt "></i></a>    
-                        <label class=" me-2" for="flexCheckDefault">Update F/W</label>
-                        <input  type="checkbox" value="" id="flexCheckDefault">
-                    </td>
+                      <td class="d-flex align-items-center gap-2">
+                          <button class="btn btn-primary btn-sm">Assign</button>
+                          <a href="#" class="text-secondary-emphasis fs-4 me-2"><i class="uil uil-trash-alt"></i></a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
-              </div>
+            </div>    
+                
+
+         
           </section>
         </div>
       </div>

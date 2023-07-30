@@ -36,3 +36,9 @@ def reports(request):
 
 def fieldEngineer(request):
     return render(request, 'eega/fieldEngineer.html')
+
+def configurations(request):
+    return render(request, 'eega/configurations.html')
+
+def geofence(request):
+    return render(request, 'eega/geofence.html')
